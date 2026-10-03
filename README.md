@@ -201,4 +201,27 @@ GitHub позволяет назначить reviewer только среди п
 
 Не добавляйте студентов в bypass list и не выдавайте им роль Admin.
 
-Для комментариев Actions откройте **Settings → Actions → General → Workflow permissions** и включите **Read and write permissions**. Разрешение **Allow GitHub Actions to create and approve pull requests** для этой схемы не требуется: Pull Request создаёт студент, а workflow только проверяет его и добавляет комментарий. Для публикации Release workflow требуется разрешение `contents: write`; оно уже указано в файле workflow.
+Для комментариев Actions откройте **Settings → Actions → General → Workflow permissions** и включите **Read and write permissions**. Разрешение **Allow GitHub Actions to create and approve pull requests** для этой схемы не требуется: Pull Request создаёт студент, а workflow только проверяет его и добавляет комментарий. 
+
+Для публикации Release workflow требуется разрешение `contents: write`; оно уже указано в файле workflow.
+
+### Как пушить, чтобы версия приложения увеличивалась
+
+Не изменяйте `versionCode` и `versionName` вручную. GitHub Actions назначает их автоматически:
+
+```text
+versionCode = номер запуска публикации
+versionName = 1.0.<номер запуска публикации>
+```
+
+Правильный порядок действий:
+
+1. отправьте изменения в отдельную ветку командой `git push -u origin <имя-ветки>`;
+2. создайте Pull Request из этой ветки в `master`;
+3. после замечаний делайте новые commit и обычный `git push` в ту же ветку;
+4. дождитесь успешного прохождения проверок;
+5. объедините принятый Pull Request в `master`.
+
+Версия релиза увеличивается после принятия и объединения Pull Request. После merge workflow создаёт новый тег вида `v1.0.N`, GitHub Release и APK с той же версией. Обычный push в учебную ветку только обновляет Pull Request и не создаёт релиз. Прямой push в `master` запрещён.
+
+Студентам нельзя изменять минорный номер версии вручную: он увеличивается автоматически после того, как принятый Pull Request попадает в `master`. Для этого нужно отправить работу в отдельную ветку, создать Pull Request в `master`, пройти проверки и дождаться его объединения. Обычный push в учебную ветку версию релиза не увеличивает.

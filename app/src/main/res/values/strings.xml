@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">FinanceApp</string>
+    <string name="test_screen_message">FinanceApp запущен и готов к тестированию</string>
+        <string name="check_button">Проверить</string>
+    <string name="check_success_message">Всё работает!</string>
 </resources>
