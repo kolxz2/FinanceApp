@@ -8,11 +8,14 @@ internal data class MainUiState(
     val transactionCount: Int = 0,
     val transactions: List<Transaction> = emptyList(),
     val error: TransactionError? = null,
+    val isLoading: Boolean = true,
+    val isSaving: Boolean = false,
+    val isDatabaseReady: Boolean = false,
 )
 
 internal enum class TransactionType { INCOME, EXPENSE }
 
-internal enum class TransactionError { INVALID_INPUT, AMOUNT_TOO_LARGE }
+internal enum class TransactionError { INVALID_INPUT, AMOUNT_TOO_LARGE, DATABASE_ERROR }
 
 internal data class Transaction(
     val amount: Int,

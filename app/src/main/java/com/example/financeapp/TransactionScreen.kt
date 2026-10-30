@@ -39,11 +39,15 @@ internal fun TransactionScreen(viewModel: TransactionViewModel = viewModel()) {
         ) {
             Text(stringResource(R.string.transaction_title), style = MaterialTheme.typography.headlineMedium)
             Text(stringResource(R.string.balance_summary, state.balance, state.transactionCount))
+            if (state.isLoading) {
+                Text(stringResource(R.string.transaction_loading))
+            }
             OutlinedTextField(
                 value = state.description,
                 onValueChange = { viewModel.onEvent(MainUiEvent.DescriptionChanged(it)) },
                 label = { Text(stringResource(R.string.transaction_description)) },
                 singleLine = true,
+                enabled = state.isDatabaseReady && !state.isSaving,
                 modifier = Modifier.fillMaxWidth(),
             )
             OutlinedTextField(
@@ -52,16 +56,19 @@ internal fun TransactionScreen(viewModel: TransactionViewModel = viewModel()) {
                 label = { Text(stringResource(R.string.transaction_amount)) },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 singleLine = true,
+                enabled = state.isDatabaseReady && !state.isSaving,
                 modifier = Modifier.fillMaxWidth(),
             )
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 FilterChip(
                     selected = state.type == TransactionType.EXPENSE,
+                    enabled = state.isDatabaseReady && !state.isSaving,
                     onClick = { viewModel.onEvent(MainUiEvent.TypeChanged(TransactionType.EXPENSE)) },
                     label = { Text(stringResource(R.string.transaction_expense)) },
                 )
                 FilterChip(
                     selected = state.type == TransactionType.INCOME,
+                    enabled = state.isDatabaseReady && !state.isSaving,
                     onClick = { viewModel.onEvent(MainUiEvent.TypeChanged(TransactionType.INCOME)) },
                     label = { Text(stringResource(R.string.transaction_income)) },
                 )
@@ -70,10 +77,15 @@ internal fun TransactionScreen(viewModel: TransactionViewModel = viewModel()) {
                 val message = when (error) {
                     TransactionError.INVALID_INPUT -> R.string.transaction_invalid_input
                     TransactionError.AMOUNT_TOO_LARGE -> R.string.transaction_amount_too_large
+                    TransactionError.DATABASE_ERROR -> R.string.transaction_database_error
                 }
                 Text(stringResource(message), color = MaterialTheme.colorScheme.error)
             }
-            Button(onClick = viewModel::addTransaction, modifier = Modifier.fillMaxWidth()) {
+            Button(
+                onClick = viewModel::addTransaction,
+                enabled = state.isDatabaseReady && !state.isSaving,
+                modifier = Modifier.fillMaxWidth(),
+            ) {
                 Text(stringResource(R.string.transaction_add))
             }
             TransactionHistory(state.transactions)
