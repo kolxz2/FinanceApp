@@ -16,4 +16,8 @@
     <string name="transaction_loading">Загрузка операций…</string>
     <string name="transaction_history_income">%1$s: +%2$d ₽</string>
     <string name="transaction_history_expense">%1$s: −%2$d ₽</string>
+    <string name="transaction_count">Операций: %1$d</string>
+    <string name="settings_title">Настройки</string>
+    <string name="settings_show_balance">Показывать баланс</string>
+    <string name="settings_back">Назад</string>
 </resources>

@@ -34,10 +34,14 @@ internal class TransactionViewModel(application: Application) : AndroidViewModel
             }
             uiState = uiState.copy(isSaving = true)
             repository.save(event.transaction) { saved ->
-                uiState = if (saved) nextState else uiState.copy(
-                    isSaving = false,
-                    error = TransactionError.DATABASE_ERROR,
-                )
+                uiState = if (saved) {
+                    nextState
+                } else {
+                    uiState.copy(
+                        isSaving = false,
+                        error = TransactionError.DATABASE_ERROR,
+                    )
+                }
             }
         } else {
             uiState = reduce(uiState, event)
