@@ -1,0 +1,31 @@
+[33m2195d57[m[33m ([m[1;32mmaster[m[33m)[m docs: update readme
+[33m469f8f1[m chore: readme.md
+[33m21e77c6[m chore: ignore local files
+[33m8070a17[m chore: ignore local files
+[33ma8c64ff[m merge: resolve conflict
+[33m0292f54[m docs: main version
+[33m4836038[m[33m ([m[1;32mfeature/conflict[m[33m)[m feat: profile version
+[33m75892ee[m Revert "test: commit three"
+[33m043e645[m test: commit three
+[33m190217d[m test: commit one
+[33mee0eb0c[m test: commit two
+[33m1b2d893[m test: commit one
+[33m88604a6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/profile[m[33m)[m feat: profile update
+[33m5f8ff12[m docs: main update
+[33mfb16bbb[m feat: profile data
+[33m0c48a9c[m feat: add profile
+[33mda20c6e[m[33m ([m[1;32mhomework/lecture-01[m[33m)[m docs: update readme
+[33m6d2d4c5[m docs: add readme
+[33m820301e[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge pull request #10 from kolxz2/detekt-2
+[33me563d1e[m ClassSignature
+[33m16d4a6a[m Merge remote-tracking branch 'origin/master'
+[33m37d83bb[m Update README with versioning and push instructions
+[33m50aaede[m Merge pull request #9 from kolxz2/detect
+[33m331c546[m detekt new rules
+[33m4cd0134[m detekt new rules
+[33m83ea768[m Merge pull request #8 from kolxz2/to-compose
+[33me295890[m Migrate project to compose
+[33m707753b[m Merge pull request #1 from kolxz2/git-workflow
+[33m0a39ac0[m Git workflow
+[33m2e30675[m Connect detekt
+[33m4b8e213[m Init commit

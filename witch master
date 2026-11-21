@@ -1,0 +1,30 @@
+* [33m88604a6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/profile[m[33m)[m feat: profile update
+* [33m5f8ff12[m[33m ([m[1;32mmaster[m[33m)[m docs: main update
+* [33mfb16bbb[m feat: profile data
+* [33m0c48a9c[m feat: add profile
+* [33mda20c6e[m[33m ([m[1;32mhomework/lecture-01[m[33m)[m docs: update readme
+* [33m6d2d4c5[m docs: add readme
+*   [33m820301e[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge pull request #10 from kolxz2/detekt-2
+[32m|[m[33m\[m  
+[32m|[m * [33me563d1e[m ClassSignature
+[32m|[m *   [33m16d4a6a[m Merge remote-tracking branch 'origin/master'
+[32m|[m [34m|[m[32m\[m  
+[32m|[m [34m|[m[32m/[m  
+[32m|[m[32m/[m[34m|[m   
+* [34m|[m [33m37d83bb[m Update README with versioning and push instructions
+* [34m|[m   [33m50aaede[m Merge pull request #9 from kolxz2/detect
+[36m|[m[1;31m\[m [34m\[m  
+[36m|[m * [34m|[m [33m331c546[m detekt new rules
+[36m|[m[36m/[m [34m/[m  
+[36m|[m * [33m4cd0134[m detekt new rules
+[36m|[m[36m/[m  
+*   [33m83ea768[m Merge pull request #8 from kolxz2/to-compose
+[1;32m|[m[1;33m\[m  
+[1;32m|[m * [33me295890[m Migrate project to compose
+[1;32m|[m[1;32m/[m  
+*   [33m707753b[m Merge pull request #1 from kolxz2/git-workflow
+[1;34m|[m[1;35m\[m  
+[1;34m|[m * [33m0a39ac0[m Git workflow
+[1;34m|[m[1;34m/[m  
+* [33m2e30675[m Connect detekt
+* [33m4b8e213[m Init commit
