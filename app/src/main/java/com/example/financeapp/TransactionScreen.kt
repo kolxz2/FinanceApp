@@ -16,16 +16,16 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 @Suppress("FunctionNaming")
-internal fun TransactionScreen(viewModel: TransactionViewModel = viewModel()) {
+internal fun TransactionScreen(viewModel: TransactionViewModel, showBalance: Boolean, onOpenSettings: () -> Unit) {
     val state = viewModel.uiState
     Surface(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -35,34 +35,41 @@ internal fun TransactionScreen(viewModel: TransactionViewModel = viewModel()) {
                 .padding(24.dp),
         ) {
             Text(stringResource(R.string.transaction_title))
-            Text(
-                stringResource(
-                    R.string.balance_summary,
-                    state.balance,
-                    state.transactionCount,
-                ),
-            )
+            TextButton(onClick = onOpenSettings) {
+                Text(stringResource(R.string.settings_title))
+            }
+            if (showBalance) {
+                Text(stringResource(R.string.balance_summary, state.balance, state.transactionCount))
+            } else {
+                Text(stringResource(R.string.transaction_count, state.transactionCount))
+            }
             if (state.isLoading) {
                 Text(stringResource(R.string.transaction_loading))
             }
-            val enabled = state.isDatabaseReady && !state.isSaving
-            TransactionInputs(state, enabled, viewModel::onEvent)
-            state.error?.let { error ->
-                val textId = when (error) {
-                    TransactionError.INVALID_INPUT -> R.string.transaction_invalid_input
-                    TransactionError.AMOUNT_TOO_LARGE -> R.string.transaction_amount_too_large
-                    TransactionError.DATABASE_ERROR -> R.string.transaction_database_error
-                }
-                Text(
-                    stringResource(textId),
-                    color = MaterialTheme.colorScheme.error,
-                )
-            }
-            Button(onClick = viewModel::addTransaction, enabled = enabled) {
-                Text(stringResource(R.string.transaction_add))
-            }
+            TransactionForm(viewModel, state)
             TransactionHistory(state.transactions)
         }
+    }
+}
+
+@Composable
+@Suppress("FunctionNaming")
+private fun TransactionForm(viewModel: TransactionViewModel, state: MainUiState) {
+    val enabled = state.isDatabaseReady && !state.isSaving
+    TransactionInputs(state, enabled, viewModel::onEvent)
+    state.error?.let { error ->
+        val textId = when (error) {
+            TransactionError.INVALID_INPUT -> R.string.transaction_invalid_input
+            TransactionError.AMOUNT_TOO_LARGE -> R.string.transaction_amount_too_large
+            TransactionError.DATABASE_ERROR -> R.string.transaction_database_error
+        }
+        Text(
+            stringResource(textId),
+            color = MaterialTheme.colorScheme.error,
+        )
+    }
+    Button(onClick = viewModel::addTransaction, enabled = enabled) {
+        Text(stringResource(R.string.transaction_add))
     }
 }
 

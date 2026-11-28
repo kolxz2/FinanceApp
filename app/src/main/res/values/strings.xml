@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">FinanceApp</string>
     <string name="balance_summary">Баланс: %1$d ₽\nОпераций: %2$d</string>
+    <string name="transaction_count">Операций: %1$d</string>
+    <string name="settings_title">Настройки</string>
+    <string name="settings_show_balance">Показывать баланс</string>
+    <string name="settings_back">Назад</string>
     <string name="add_income_button">Добавить доход 500 ₽</string>
     <string name="add_expense_button">Добавить расход 250 ₽</string>
     <string name="transaction_title">Новая транзакция</string>
